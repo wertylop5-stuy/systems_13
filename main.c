@@ -25,6 +25,10 @@ int main() {
 		close(fd2[READ]);
 		
 		parent_exec(fd[READ], fd2[WRITE]);
+		
+		close(fd[READ]);
+		close(fd2[WRITE]);
+
 	}
 	else {
 		close(fd[READ]);
@@ -32,6 +36,9 @@ int main() {
 		
 		child_exec(fd2[READ], fd[WRITE]);
 		
+		close(fd[WRITE]);
+		close(fd2[READ]);
+
 		return 10;
 	}
 	
